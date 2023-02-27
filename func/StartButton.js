@@ -5,7 +5,7 @@ import Entypo from "@expo/vector-icons/Entypo";
 export default function startButton({ theme, label, linkref }) {
     if (theme ="loginMenu"){
         return (
-            <View style={[styles.startButtonContainer,{borderWidth:4,borderColor:"#000000",borderRadius:18,backgroundColor:"#8b0000"}]}>
+            <View style={[styles.startButtonContainer,{borderWidth:4,borderColor:"#000000",borderRadius:18,backgroundColor:"#8fbc8f"}]}>
               <Link style ={styles.startButtonLabel} href={linkref}> {label} 
               <Entypo name="login" size={35} color="#000000" style={styles.buttonIcon}/>
               </Link>
@@ -15,7 +15,7 @@ export default function startButton({ theme, label, linkref }) {
 
 else if (theme ="Next"){
   return (
-      <View style={[styles.startButtonContainer,{borderWidth:4,borderColor:"#000000",borderRadius:18,backgroundColor:"#8b0000"}]}>
+      <View style={[styles.startButtonContainer,{borderWidth:4,borderColor:"#000000",borderRadius:18,backgroundColor:"#add8e6"}]}>
         <Link style ={styles.startButtonLabel} href={linkref}> 
 
           {label} </Link>
