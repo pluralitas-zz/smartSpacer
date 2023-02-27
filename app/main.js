@@ -1,21 +1,33 @@
-import { View, Text } from "react-native";
+import { StyleSheet, View, Text } from "react-native";
 import { Link, useRouter, Stack } from "expo-router";
 
 export default function Main() {
   const router = useRouter();
   return (
-    <View style= {{flex:1, justifyContent:"center", alignItems:"center"}}>
+    <View style ={styles.container}>
+      
+      <Link style ={{color:'#696969'}} href="/inhaler">Quick Start</Link>
+      <Link style ={{color:'#696969'}} href="/spirometer">Spirometer</Link>
 
-      <Link href="inhaler">Quick Start</Link>
-      <Link href="spirometer">Spirometer</Link>
-      <Text
+      <Text 
         onPress={() => {
           // Go back to the previous screen using the imperative API.
           router.back();
         }}
+
       >
         Log out
       </Text>
     </View>
   );
 }
+
+
+const styles = StyleSheet.create({
+  container:{
+    flex:1,
+    backgroundColor:'#fff8dc',
+    alignItems:'center',
+    justifyContent: 'center',
+  },
+});

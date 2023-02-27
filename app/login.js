@@ -1,11 +1,19 @@
-import { StyleSheet, Text, View } from "react-native";
-import { Link, Stack } from "expo-router";
+import { StyleSheet, View } from "react-native";
+import { Link } from "expo-router";
+import startButton from './functions/startbutton';
+import { StatusBar } from "expo-status-bar";
 
 export default function Page() {
   return (
-    <View style={{ flex: 1, fontsize: 32, justifyContent: "center", alignItems: "center" }}>
-      <Link href="/main">Log In Here</Link>
+    <View style ={styles.container}>
+      <Link href="/main"> Log In </Link>
+      <View style= {styles.footerContainer}>
+        <startButton theme ="primary" label ="Login" />
+      </View>
+      <StatusBar style ="auto"/>
     </View>
+    
+    
   );
 }
 
@@ -13,6 +21,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
+    backgroundColor:'#8fbc8f',
+    justifyContent: 'center',
     padding: 24,
   },
   main: {
@@ -29,4 +39,10 @@ const styles = StyleSheet.create({
     fontSize: 36,
     color: "#38434D",
   },
+  footerContainer: {
+    flex:1/3,
+    alignItems: 'center',
+  },
 });
+
+
