@@ -4,13 +4,13 @@
     "web": {
       "bundler": "metro"
     },
-    "name": "rout-app",
-    "slug": "rout-app"
-  }
+    "name": "smartSpacer",
+    "slug": "smartSpacer"
+  },
 
-  // "splash": {
-  //   "image": "./assets/splash.png",
-  //   "resizeMode": "contain",
-  //   "backgroundColor": "#25292e"
-  // }
+  "splash": {
+    "image": "./assets/background/splash.png",
+    "resizeMode": "contain",
+    "backgroundColor": "#25292e"
+  }
 }
