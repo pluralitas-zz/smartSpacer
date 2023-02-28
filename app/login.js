@@ -1,38 +1,33 @@
-import { StyleSheet, View, Text } from "react-native";
+import React,{useState} from "react";
 
+import { StyleSheet, View, Text } from "react-native";
 import StartButton from "../func/StartButton";
 import { StatusBar } from "expo-status-bar";
-import DropDownPicker from "react-native-dropdown-picker";
 import Constants from "expo-constants";
-import useState from 'react-hook-use-state';
+import {Picker} from "@react-native-picker/picker";
 
 
 
 
 export default function Page() {
-
+  const [pickerValue,setPickerValue] =useState("Select User")
   return (
     <View style ={styles.container}>
       <Text style = {styles.paragraph}>Smart Spacer </Text>
-      <Text style = {styles.paragraph2}>
-        A one-stop application that helps you to track your doses and asthma condition!
-      </Text>
-      <DropDownPicker
-        items = {[
-          {label:'Alex', value:'item 1', selected: true},
-          {label:'Benard', value:'item 2'},
-          {label:'New User', value:'item 3'}
-        ]}
-        defaultIndex={0}
-        // defaultNull
-        // placeholder= "Select a user"
-        containerStyle = {{height:40}}
-        onChangeItem = {item => console.log(item.label, item.value)}
-      />
+      <Text style = {styles.paragraph2}> A one-stop application that helps you to track your doses and asthma condition!</Text>
 
+      <Picker
+        style = {styles.picker}
+        selectedValue={pickerValue}
+        onValueChange={(itemValue) =>setPickerValue(itemValue)}
+      >
+        <Picker.Item label ="Select User" value="Select User"/>
+        <Picker.Item label ="Alex" value="Alex"/>
+        <Picker.Item label ="Benard" value="Benard"/>
+        <Picker.Item label ="Create New User!" value="Create New User!"/>
+      </Picker>
 
       <View style= {styles.footerContainer}>
-
         <StartButton theme ="primary" label="Login " linkref="/main" />
 
 
@@ -52,7 +47,7 @@ const styles = StyleSheet.create({
     backgroundColor:'#8fbc8f',
     justifyContent: 'center',
     paddingTop: Constants.statusBarHeight,
-    padding: 8,
+    padding: 10,
   },
   main: {
     flex: 1,
@@ -69,7 +64,7 @@ const styles = StyleSheet.create({
     color: "#38434D",
   },
   footerContainer: {
-    flex:2/3,
+    flex:12/16,
     alignItems: 'center',
   },
   paragraph:{
@@ -85,6 +80,11 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color:"#ffffff"
   },
+  picker:{
+    width: 300,
+    height: 40
+
+  }
 
 });
 
