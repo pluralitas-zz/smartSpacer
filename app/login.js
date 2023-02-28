@@ -14,7 +14,7 @@ export default function Page() {
   return (
     <View style ={styles.container}>
       <Text style = {styles.paragraph}>Smart Spacer </Text>
-      <Text style = {styles.paragraph2}> A one-stop application that helps you to track your doses and asthma condition!</Text>
+      <Text style = {styles.paragraph2}> Tracking your medication and condition in a reliable and no-hassle way.</Text>
 
       <Picker
         style = {styles.picker}
@@ -27,7 +27,7 @@ export default function Page() {
         <Picker.Item label ="Create New User!" value="Create New User!"/>
       </Picker>
 
-      <View style= {styles.footerContainer}>
+      <View style= {styles.loginContainer}>
         <StartButton theme ="primary" label="Login " linkref="/main" />
 
 
@@ -46,44 +46,33 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor:'#8fbc8f',
     justifyContent: 'center',
-    paddingTop: Constants.statusBarHeight,
-    padding: 10,
+
+    paddingTop:300
   },
-  main: {
-    flex: 1,
-    justifyContent: "center",
-    maxWidth: 960,
-    marginHorizontal: "auto",
-  },
-  title: {
-    fontSize: 64,
-    fontWeight: "bold",
-  },
-  subtitle: {
-    fontSize: 36,
-    color: "#38434D",
-  },
-  footerContainer: {
-    flex:12/16,
+  loginContainer: {
     alignItems: 'center',
+    height:'90%',
+    marginTop: 150,
+    height: '50%'
   },
   paragraph:{
-    margin: 24,
-    fontSize: 24,
+    // margin: 24,
+    fontSize: 32,
     fontWeight:'bold',
     textAlign: 'center',
-    color:"#ffffff"
+    color:"#000000",
+    height: '10%'
   },
   paragraph2:{
     margin: 24,
     fontSize: 15,
     textAlign: 'center',
-    color:"#ffffff"
+    color:"#ffffff",
+    height: '10%'
   },
   picker:{
     width: 300,
-    height: 40
-
+    height: 40,
   }
 
 });
