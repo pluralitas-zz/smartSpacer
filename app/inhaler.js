@@ -4,7 +4,7 @@ import { useRouter } from "expo-router";
 export default function Inhaler() {
   const router = useRouter();
   return (
-    <View style={{ flex: 1, fontsize: 30, justifyContent: "center", alignItems: "center" }}>
+    <View style={{ flex: 1, fontsize: 50, justifyContent: "center", alignItems: "center" }}>
       <Text>
         Inhaler
       </Text>

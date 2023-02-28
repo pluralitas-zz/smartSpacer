@@ -5,9 +5,9 @@ import Entypo from "@expo/vector-icons/Entypo";
 export default function startButton({ theme, label, linkref }) {
     if (theme ="loginMenu"){
         return (
-            <View style={[styles.startButtonContainer,{borderWidth:4,borderColor:"#000000",borderRadius:18,backgroundColor:"#8b0000"}]}>
+            <View style={[styles.startButtonContainer,{borderWidth:4,borderColor:"#8fbc8f",borderRadius:18,backgroundColor:"#ffffff"}]}>
               <Link style ={styles.startButtonLabel} href={linkref}> {label} 
-              <Entypo name="login" size={35} color="#000000" style={styles.buttonIcon}/>
+              <Entypo name="login" size={25} color="#008080" style={styles.buttonIcon}/>
               </Link>
             </View>
         );
@@ -27,7 +27,7 @@ else if (theme ="Next"){
 const styles = StyleSheet.create({
   startButtonContainer: {
     width: 180,
-    height: 80,
+    height: 60,
     marginHorizontal: 20,
     marginTop: 400,
     alignItems: 'center',
@@ -43,8 +43,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   startButtonLabel: {
-    color: '#000000',
+    color: '#008080',
     fontWeight: "bold",
-    fontSize: 25,
+    fontSize: 20,
   },
 });

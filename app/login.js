@@ -3,13 +3,14 @@ import { StyleSheet, View } from "react-native";
 import StartButton from "../func/StartButton";
 import { StatusBar } from "expo-status-bar";
 
+
 export default function Page() {
   return (
     <View style ={styles.container}>
 
       <View style= {styles.footerContainer}>
 
-        <StartButton theme ="primary" label="Login" linkref="/main" />
+        <StartButton theme ="primary" label="Login " linkref="/main" />
 
       
       </View>
@@ -24,7 +25,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
-    backgroundColor:'#696969',
+    backgroundColor:'#8fbc8f',
     justifyContent: 'center',
     padding: 24,
   },
