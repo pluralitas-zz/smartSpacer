@@ -1,4 +1,4 @@
-export { default } from "./login.js";
+export {default } from "./login.js";
 
 /* DO NOT EDIT HERE
 
