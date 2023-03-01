@@ -14,10 +14,11 @@ export default function Main() {
         <View style ={styles.innerAirQualitytext}></View>
       </View> */}
       <View style ={styles.ContainerMain}>
-        <View style ={styles.innerContainerMaintext}>
-          <Link style ={{color:'#ffffff'}} href="/inhaler">Quick Start </Link>
+        <Image source={require('../assets/images/quickstart.png')} style={styles.QuickStartImage} />
+        <View >
+          <Link style ={styles.QuickStartText} href="/inhaler"> Quick Start </Link>
         </View>
-        <Image source={require('./assets/images/girl-spacer.jpg')} style={styles.QuickStartImage} />
+        
       </View>
 
       <Text 
@@ -34,6 +35,7 @@ export default function Main() {
 }
 
 const deviceWidth = Math.round (Dimensions.get('window').width);
+const radius = 20;
 const styles = StyleSheet.create({
   container:{
     flex:1,
@@ -55,20 +57,29 @@ const styles = StyleSheet.create({
     width:deviceWidth-40,
     backgroundColor:'#ff8c00',
     height: 200,
-    borderRadius: 20,
+    borderRadius: radius,
 
     shadowColor:'#000',
     shadowOffset:{
         width: 10,
         height: 10,
     },
-    shadowOpacity: 0.75,
+    shadowOpacity: 0.9,
     shadowRadius: 10,
     elevation:20,
   },
   QuickStartImage: {
-    height: 200,
+    height: 160,
     width: deviceWidth-40,
+    borderTopLeftRadius: radius,
+    borderTopRightRadius: radius,
+    opacity:0.9,
+    alignContent:'center',
+    alignSelf:'center'
+  },
+  QuickStartText:{
+    fontSize:20,
+    fontWeight:'800'
   }
 
 });
