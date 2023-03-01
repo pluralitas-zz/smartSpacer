@@ -1,5 +1,7 @@
-import { StyleSheet, View, Text, Dimensions } from "react-native";
+import { StyleSheet, View, Text, Dimensions,Image } from "react-native";
 import { Link, useRouter, Stack } from "expo-router";
+
+
 
 export default function Main() {
 
@@ -7,19 +9,15 @@ export default function Main() {
   return (
     <View style ={styles.container}>
       <Text style = {styles.welcomeLine}> Welcome Alex! </Text>
-      <View style ={styles.box1}>
-        <Text style ={{color:'#ffffff'}}>Air Quality </Text>
-      </View>
-      <View style ={styles.box2}>
-        <View style ={styles.innerBox2text}>
+
+      {/* <View styles ={styles.AirQuality}>
+        <View style ={styles.innerAirQualitytext}></View>
+      </View> */}
+      <View style ={styles.ContainerMain}>
+        <View style ={styles.innerContainerMaintext}>
           <Link style ={{color:'#ffffff'}} href="/inhaler">Quick Start </Link>
         </View>
-      </View>
-
-      <View style ={styles.box3}>
-        <View style ={styles.innerBox3text}>
-          <Link style ={{color:'#ffffff'}} href="/spirometer">Spirometer </Link>
-        </View>
+        <Image source={require('./assets/images/girl-spacer.jpg')} style={styles.QuickStartImage} />
       </View>
 
       <Text 
@@ -35,7 +33,7 @@ export default function Main() {
   );
 }
 
-
+const deviceWidth = Math.round (Dimensions.get('window').width);
 const styles = StyleSheet.create({
   container:{
     flex:1,
@@ -52,33 +50,25 @@ const styles = StyleSheet.create({
     height:'15%',
 
   },
-  box1:{
-    width:350,
-    height:130,
-    backgroundColor:'#000000',
-    borderRadius:12,
-    paddingTop:10,
-    paddingLeft: 20,
-    paddingVertical:50,
-    height:'15%'
-  
 
+  ContainerMain:{
+    width:deviceWidth-40,
+    backgroundColor:'#ff8c00',
+    height: 200,
+    borderRadius: 20,
 
+    shadowColor:'#000',
+    shadowOffset:{
+        width: 10,
+        height: 10,
+    },
+    shadowOpacity: 0.75,
+    shadowRadius: 10,
+    elevation:20,
   },
-  box2:{
-    width:350,
-    height:500,
-    backgroundColor:'#000000',
-    borderRadius:12,
-    paddingTop:30,
-    height:'15%'
-  },
-  box3:{
-    width:350,
-    height:500,
-    backgroundColor:'#000000',
-    borderRadius:12,
-    paddingTop:30,
-    height:'15%'
+  QuickStartImage: {
+    height: 200,
+    width: deviceWidth-40,
   }
+
 });
