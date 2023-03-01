@@ -22,8 +22,6 @@ export default function Main() {
         </View>
       </View>
 
-
-
       <Text 
         onPress={() => {
           // Go back to the previous screen using the imperative API.

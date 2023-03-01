@@ -7,19 +7,21 @@ import Constants from "expo-constants";
 import {Picker} from "@react-native-picker/picker";
 
 export default function Page() {
-  const [pickerValue,setPickerValue] =useState("Select User")
+  const [pickerValue,setPickerValue] =useState("null")
+  console.log(pickerValue);
   return (
     <View style ={styles.backgroundContainer}>
       <Text style = {styles.title}>Smart Spacer </Text>
       <Text style = {styles.subtitle}> Tracking your medication and condition in a reliable and no-hassle way.</Text>
     
       <View styles = {styles.paragraph}>
+      <Text style = {styles.pickerLabel}>Select User: </Text>
         <Picker
           style = {styles.picker}
           selectedValue={pickerValue}
           onValueChange={(itemValue) =>setPickerValue(itemValue)}
         >
-          <Picker.Item label ="Select User" value="Select User"/>
+          <Picker.Item label ="Select a user" value="null"/>
           <Picker.Item label ="Alex" value="Alex"/>
           <Picker.Item label ="Benard" value="Benard"/>
           <Picker.Item label ="Create New User!" value="Create New User!"/>
@@ -27,7 +29,7 @@ export default function Page() {
         </View>
       
       <View style= {styles.loginContainer}>
-        <StartButton theme ="primary" label="Login " linkref="/main" />
+        <StartButton theme ="primary" label="Login " linkref="/main" value={pickerValue}/>
 
       </View>
       <StatusBar style ="auto"/>
@@ -57,12 +59,17 @@ const styles = StyleSheet.create({
     marginTop:16, 
     marginHorizontal:24
   },
+  pickerLabel:{    
+    color:"#000000",
+    fontSize:15,
+    marginTop:16,
+  },
   picker:{
-    marginTop:100,
     width: 300,
-    height: 200,
-    justifyContent:'center',
+    // height: 200,
+    // justifyContent:'center',
     alignContent:'center',
+    backgroundColor:'#fff'
   },
   loginContainer: {
     alignItems: 'center',

@@ -2,7 +2,7 @@ import { StyleSheet, View, Pressable, Text } from 'react-native';
 import { Link } from "expo-router";
 import Entypo from "@expo/vector-icons/Entypo";
 
-export default function startButton({ theme, label, linkref }) {
+export default function startButton({ theme, label, linkref, value }) {
     if (theme ="loginMenu"){
         return (
             <View style={[styles.startButtonContainer,{borderWidth:4,borderColor:"#8fbc8f",borderRadius:18,backgroundColor:"#2f4f4f"}]}>
@@ -16,7 +16,7 @@ export default function startButton({ theme, label, linkref }) {
 else if (theme ="Next"){
   return (
       <View style={[styles.startButtonContainer,{borderWidth:4,borderColor:"#000000",borderRadius:18,backgroundColor:"#8b0000"}]}>
-        <Link style ={styles.startButtonLabel} href={linkref}> 
+        <Link style ={styles.startButtonLabel} href={'/main'}> 
 
           {label} </Link>
       </View>
