@@ -15,7 +15,7 @@ export default function Page() {
       <Text style = {styles.subtitle}> Tracking your medication and condition in a reliable and no-hassle way.</Text>
     
       <View styles = {styles.paragraph}>
-      <Text style = {styles.pickerLabel}>Select User: </Text>
+      {/* <Text style = {styles.pickerLabel}>Select User: </Text> */}
         <Picker
           style = {styles.picker}
           selectedValue={pickerValue}
@@ -69,7 +69,8 @@ const styles = StyleSheet.create({
     // height: 200,
     // justifyContent:'center',
     alignContent:'center',
-    backgroundColor:'#fff'
+    backgroundColor:'#fff',
+    marginTop:30
   },
   loginContainer: {
     alignItems: 'center',
