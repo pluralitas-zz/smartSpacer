@@ -38,44 +38,50 @@ export default function Main() {
     <View style ={styles.container}>
       <Text style = {styles.welcomeLine}> Welcome Alex! </Text>
 
-      {/* <View styles ={styles.AirQualityC}>
-        <View style ={styles.AirQualitytext}></View>
-      </View> */}
+      <ScrollView style ={styles.scrollView}>
 
-      <View style ={styles.AirQualityC}>
-        <Image source={require('../assets/images/sgphoto.jpg')} style={styles.AirQualityImage} />
-        <View >
-          <Link style ={styles.QuickStartText} href="/airquality"> Air Quality </Link>
+        <View style ={styles.AirQualityC}>
+          <Image source={require('../assets/images/sgphoto.jpg')} style={styles.AirQualityImage} />
+          <View >
+            <Link style ={styles.QuickStartText} href="/airquality"> Air Quality </Link>
+          </View>
+          
         </View>
-        
-      </View>
 
-      <View style ={styles.QuickStartC}>
-        <Image source={require('../assets/images/quickstart.png')} style={styles.QuickStartImage} />
-        <View >
-          <Link style ={styles.QuickStartText} href="/inhaler"> Quick Start </Link>
+        <View style ={styles.QuickStartC}>
+          <Image source={require('../assets/images/quickstart.png')} style={styles.QuickStartImage} />
+          <View >
+            <Link style ={styles.QuickStartText} href="/inhaler"> Quick Start </Link>
+          </View>
+          
         </View>
-        
-      </View>
 
-      <View style ={styles.SpirometerC}>
-        <Image source={require('../assets/images/inhaler.png')} style={styles.SpirometerImage} />
-        <View >
-          <Link style ={styles.SpirometerText} href="/spirometer"> Spirometer </Link>
+        <View style ={styles.SpirometerC}>
+          <Image source={require('../assets/images/inhaler.png')} style={styles.SpirometerImage} />
+          <View >
+            <Link style ={styles.SpirometerText} href="/spirometer"> Spirometer </Link>
+          </View>
+          
         </View>
-        
-      </View>
 
+        <View style ={styles.StatisticsC}>
+          <Image source={require('../assets/images/statistics2.png')} style={styles.StatisticsImage} />
+          <View >
+            <Link style ={styles.StatisticsText} href="/airquality"> Statistics </Link>
+          </View>
+          
+        </View>
 
+        <Text 
+          onPress={() => {
+            // Go back to the previous screen using the imperative API.
+            router.back();
+          }}
+        >
+          Log out
+        </Text>
 
-      <Text 
-        onPress={() => {
-          // Go back to the previous screen using the imperative API.
-          router.back();
-        }}
-      >
-        Log out
-      </Text>
+      </ScrollView>
     </View>
   );
 }
@@ -91,6 +97,13 @@ const styles = StyleSheet.create({
     alignItems: "center",
     // justifyContent: 'center',
   },
+
+  scrollView: {
+    backgroundColor: '8fbc8f',
+    marginHorizontal: 10,
+  },
+
+
   welcomeLine:{
     margin: 2,
     fontSize: 24,
@@ -106,7 +119,7 @@ const styles = StyleSheet.create({
     backgroundColor:'#f5f5dc',
     height: 200,
     borderRadius: radius,
-    marginTop: 20,
+    marginTop: 10,
     shadowColor:'#000',
     shadowOffset:{
         width: 10,
@@ -189,4 +202,34 @@ const styles = StyleSheet.create({
     fontWeight:'800'
   },
 
+  
+  StatisticsC:{
+    width:deviceWidth-40,
+    backgroundColor:'#f5f5dc',
+    height: 200,
+    borderRadius: radius,
+    marginTop: 20,
+    shadowColor:'#000',
+    shadowOffset:{
+        width: 5,
+        height: 5,
+    },
+    shadowOpacity: 0.9,
+    shadowRadius: 5,
+    elevation:20,
+  },
+
+  StatisticsImage: {
+    height: 160,
+    width: deviceWidth-40,
+    borderTopLeftRadius: radius,
+    borderTopRightRadius: radius,
+    opacity:0.9,
+    alignContent:'center',
+    alignSelf:'center'
+  },
+  StatisticsText:{
+    fontSize:20,
+    fontWeight:'800'
+  },
 });
