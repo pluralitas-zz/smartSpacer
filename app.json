@@ -4,10 +4,38 @@
     "web": {
       "bundler": "metro"
     },
+    "plugins": [
+      [
+        "@config-plugins/react-native-ble-plx",
+        {
+          "isBackgroundEnabled": true,
+          "modes": [
+            "peripheral",
+            "central"
+          ],
+          "bluetoothAlwaysPermission": "Allow $(PRODUCT_NAME) to connect to bluetooth devices"
+        }
+      ]
+    ],
     "name": "smartSpacer",
-    "slug": "smartSpacer"
+    "slug": "smartSpacer",
+    "android": {
+      "permissions": [
+        "android.permission.BLUETOOTH",
+        "android.permission.BLUETOOTH_ADMIN",
+        "android.permission.BLUETOOTH_CONNECT"
+      ],
+      "package": "com.pluralitas.smartSpacer"
+    },
+    "ios": {
+      "bundleIdentifier": "com.pluralitas.smartSpacer"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "954b9f17-544f-4ed8-8cb5-7566db598b1a"
+      }
+    }
   },
-
   "splash": {
     "image": "./assets/background/splash.png",
     "resizeMode": "contain",

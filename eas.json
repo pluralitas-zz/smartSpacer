@@ -1,0 +1,22 @@
+{
+  "cli": {
+    "version": ">=0.54.1"
+  },
+  "build": {
+    // *************** FOR android *****************************
+    "development":{
+      "developmentClient": true,
+      "distribution": "internal"
+    },
+    // *************** FOR iOS *****************************
+    // "development-simulator":{
+    //   "developmentClient": true,
+    //   "distribution": "internal",
+    //   "ios":{"simulator": true}
+    // },
+    "preview":{
+      "distribution": "internal"
+    },
+    "production" :{}
+  }
+}
