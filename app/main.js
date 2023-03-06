@@ -1,44 +1,32 @@
-import { StyleSheet, View, Text, Dimensions,Image,FlatList,ScrollView } from "react-native";
+import React from 'react';
+import { StyleSheet, View, Text, Dimensions,Image,FlatList,ScrollView,Pressable } from "react-native";
 import { Link, useRouter, Stack } from "expo-router";
+import StartButton from "../func/StartButton";
+import Entypo from "@expo/vector-icons/Entypo";
+import BoxesButton from '../func/Boxes';
 
-const DATA =[
-  {
-    name:'Air Quality',
-    image: require ('../assets/images/quickstart.png'),
-    id:1,
-  },
-  {
-    name:'Quick Start',
-    image: require('../assets/images/quickstart.png'),
-    link: href = "/inhaler",
-    id:2,
-  },
-  {
-    name:'Spirometer',
-    image: require ('../assets/images/quickstart.png'),
-    link: href = "/Spirometer",
-    id:3,
-  },
-  {
-    name: 'Tips',
-    image: require ('../assets/images/quickstart.png'),
-    id:4,
-  },
-  {
-    name:'Statistics',
-    image: require ('../assets/images/quickstart.png'),
-    id:5
-  },
 
-]
 
 export default function Main() {
   const router = useRouter();
-  return (
-    <View style ={styles.container}>
-      <Text style = {styles.welcomeLine}> Welcome Alex! </Text>
 
-      <ScrollView style ={styles.scrollView}>
+
+  return (
+
+    <View style ={styles.container}>
+      <Text style ={styles.welcomesean}> Welcome Sean! </Text>
+      <ScrollView>
+        {/* <View style ={styles.longhoriContainer}>
+          <View style ={styles.optionsRow}>
+          <View style= {styles.QuickStartContainer}>
+            <QuickStart theme ="primary" label="Login " linkref="/inhaler" value={listValue}/>
+          </View>
+
+          </View>
+        </View> */}
+        
+
+
 
         <View style ={styles.AirQualityC}>
           <Image source={require('../assets/images/sgphoto.jpg')} style={styles.AirQualityImage} />
@@ -70,16 +58,12 @@ export default function Main() {
             <Link style ={styles.StatisticsText} href="/airquality"> Statistics </Link>
           </View>
           
+        </View> 
+
+        <View style= {styles.logoutContainer}>
+          <StartButton theme ="logout" label="Logout " linkref="/login" />
         </View>
 
-        <Text 
-          onPress={() => {
-            // Go back to the previous screen using the imperative API.
-            router.back();
-          }}
-        >
-          Log out
-        </Text>
 
       </ScrollView>
     </View>
@@ -91,29 +75,44 @@ const deviceWidth = Math.round (Dimensions.get('window').width);
 const radius = 20;
 const styles = StyleSheet.create({
   container:{
-    flex:1,
-    backgroundColor:'#8fbc8f', 
+    width:'100%',
+    height:'100%',
+    backgroundColor:'#0000ff', 
     // another colour: fff8dc
     alignItems: "center",
     // justifyContent: 'center',
+
   },
 
   scrollView: {
-    backgroundColor: '8fbc8f',
+    backgroundColor: 'ffffff',
     marginHorizontal: 10,
   },
 
-
-  welcomeLine:{
-    margin: 2,
-    fontSize: 24,
+  welcomesean:{
     fontWeight:'bold',
-    color:"#000000",
-    paddingTop: 50,
-    height:'15%',
-
+    textAlign: 'center',
+    fontSize:20, 
+    color:"#000000", 
+    marginTop:75,
+    marginBottom:50,
   },
-  
+
+  longhoriContainer: {
+    width: deviceWidth-40,
+    height: 200,
+    marginHorizontal: 20,
+    // position:'absolute',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor:'#000000',
+  },
+
+    optionsRow:{
+      alignItems:'center',
+      flexDirection:'row',
+    },
+
   AirQualityC:{
     width:deviceWidth-40,
     backgroundColor:'#f5f5dc',
@@ -122,12 +121,12 @@ const styles = StyleSheet.create({
     marginTop: 10,
     shadowColor:'#000',
     shadowOffset:{
-        width: 10,
-        height: 10,
+        width: 5,
+        height: 5,
     },
     shadowOpacity: 0.9,
-    shadowRadius: 10,
-    elevation:20,
+    shadowRadius: 5,
+    elevation:10,
   },
 
   AirQualityImage: {
@@ -217,6 +216,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.9,
     shadowRadius: 5,
     elevation:20,
+
   },
 
   StatisticsImage: {
@@ -231,5 +231,15 @@ const styles = StyleSheet.create({
   StatisticsText:{
     fontSize:20,
     fontWeight:'800'
+  },
+
+  logoutContainer: {
+    alignItems: 'center',
+    height:'10%',
+    marginTop: 50,
+    marginBottom:50,
+
+    
+
   },
 });

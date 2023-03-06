@@ -1,32 +1,40 @@
 import { StyleSheet, View, Pressable, Text } from 'react-native';
 import { Link } from "expo-router";
 import Entypo from "@expo/vector-icons/Entypo";
-import SimpleLineIcons from "@expo/vector-icons/SimpleLineIcons";
+import MaterialIcons from "@expo/vector-icons/MaterialIcons";
+
 
 export default function startButton({ theme, label, linkref, value }) {
     if (theme ="loginMenu"){
         return (
-            <View style={[styles.startButtonContainer,{borderWidth:4,borderColor:"#0000ff",borderRadius:18,backgroundColor:"#ffffff"}]}>
+            <View style={[styles.BoxesContainer,{borderWidth:4,borderColor:"#0000ff",borderRadius:18,backgroundColor:"#ffffff"}]}>
               <Link style ={styles.startButtonLabel} href={linkref}> {label} 
-              <Entypo name="login" size={25} color="#0000ff" style={styles.buttonIcon}/>
+              <Entypo name="user" size={25} color="#0000ff" style={styles.buttonIcon}/>
               </Link>
             </View>
         );
     }
 
-else if (theme ="Log Out"){
+else if (theme ="Next"){
   return (
       <View style={[styles.startButtonContainer,{borderWidth:4,borderColor:"#000000",borderRadius:18,backgroundColor:"#8b0000"}]}>
-        <Link style ={styles.startButtonLabel} href={linkref}> {label} 
-        <SimpleLineIcons name = "logout" size={25} color="#0000ff" style={styles.buttonIcon}/>
-        </Link>
+        <Link style ={styles.startButtonLabel} href={'/main'}> 
+
+          {label} </Link>
       </View>
   );
 }
 }
 
 const styles = StyleSheet.create({
-  startButtonContainer: {
+BoxesButton: {
+    width: (deviceWidth-60)/2 ,
+    height: 50,
+    paddingTop:10,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+BoxesContainer: {
     width: 300,
     height: 70,
     marginHorizontal: 20,
@@ -35,16 +43,8 @@ const styles = StyleSheet.create({
     padding: 3,
 
   },
-  startButton: {
-    borderRadius: 8,
-    width: '100%',
-    height: '100%',
-    alignItems: 'center',
-    justifyContent: 'center',
-    flexDirection: 'row',
-  },
-  startButtonLabel: {
-    color: '#0000ff',
+BoxesButtonLabel: {
+    color: '#000000',
     fontWeight: "bold",
     fontSize: 20,
   },
