@@ -151,7 +151,7 @@ function useBLE(): BluetoothLowEnergyApi {
 
   // Stream data from BLE service and characteristic
   const startStreamingData = async (device: Device) => {
-    setStatus('Streaming from device');
+    setStatus('Streaming from ' + device.name);
     if (device) {
       console.log('Monitoring characteristic');
       device.monitorCharacteristicForService(
