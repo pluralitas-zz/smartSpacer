@@ -10,7 +10,7 @@ export default function FunctionLayout() {
 
       {/* Naming the static screen headers */}
       <Stack.Screen name="index" options={{title:"Home", headerShown:false}}/>
-      <Stack.Screen name="main" options={{title:'Main Menu', headerShown:false}}/>
+      <Stack.Screen name="titlepage" options={{title:'Title Page', headerShown:false}}/>
       <Stack.Screen name="inhaler" options={{title:'Quick Start'}}/>
       <Stack.Screen name="spirometer" options={{title:'Spirometer'}}/>
             

@@ -10,10 +10,10 @@ const ContainerMain =() => {
 
 };
 
-const deviceWidth = Math.round (Dimensions.get('window').width);
+
 const styles = StyleSheet.create({
     ContainerMain:{
-        width:deviceWidth-25,
+        width:300-25,
         backgroundColor:'#29bfe',
         height: 100,
         borderRadius: 20,

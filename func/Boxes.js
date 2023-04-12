@@ -28,7 +28,7 @@ else if (theme ="Next"){
 
 const styles = StyleSheet.create({
 BoxesButton: {
-    width: (deviceWidth-60)/2 ,
+    width: (360-60)/2 ,
     height: 50,
     paddingTop:10,
     alignItems: 'center',
