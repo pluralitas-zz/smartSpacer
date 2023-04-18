@@ -12,7 +12,7 @@ export default function BreathingTechniques() {
   }
 
   return (
-    <Modal animationType="slide" visible={true}>
+    // <Modal animationType="slide" visible={true}>
       <View style={styles.container}>
         <Swiper showsButtons={false} loop={false} onIndexChanged={handleIndexChange} index={activeIndex}>
           <View style={styles.slide}>
@@ -41,19 +41,20 @@ export default function BreathingTechniques() {
         </TouchableOpacity>
 
       </View>
-    </Modal>
+    // </Modal>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: 10, // set the top margin to 50
-    marginLeft: 20, // set the left margin to 20
-    marginRight: 20, // set the right margin to 20
+    backgroundColor:"#fff"
   },
   slide: {
     flex: 1,
+    marginTop: 10, // set the top margin to 50
+    marginLeft: 20, // set the left margin to 20
+    marginRight: 20, // set the right margin to 20
     alignItems: 'flex-start', // align the content to the left
     justifyContent: 'center',
     backgroundColor: '#fff',
@@ -94,7 +95,7 @@ const styles = StyleSheet.create({
     width: "90%",
     height: '10%',
     marginBottom: 50,
-    paddingHorizontal: 20,
+    paddingHorizontal: 50,
     marginLeft:20,
     justifyContent: "center",
     alignItems: "center",

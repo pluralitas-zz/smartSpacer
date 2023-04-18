@@ -37,7 +37,7 @@ export default function Page() {
 const styles = StyleSheet.create({
   backgroundContainer: {
     alignItems: "center",
-    backgroundColor: "#0000ff",
+    backgroundColor: "#6495ed",
     justifyContent: "center",
     height: "100%",
   },
@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 55,
   },
   ModelImage: {
-    height: 160,
+    height: 180,
     width: 300,
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,

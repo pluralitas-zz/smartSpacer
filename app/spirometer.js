@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, TouchableOpacity, ScrollView } from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity, ScrollView, Modal } from "react-native";
 import { useRouter } from "expo-router";
 import React from 'react';
 import { MaterialCommunityIcons, FontAwesome5 } from '@expo/vector-icons';
@@ -23,6 +23,7 @@ export default function Spirometer() {
         </TouchableOpacity>
       </View>
     </ScrollView>
+
   );
 }
 

@@ -24,7 +24,7 @@ export default function App() {
           <Text style={styles.buttonText}>Air Quality</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={[styles.button, styles.quickStart]} onPress={() => router.push('/inhaler')}>
+        <TouchableOpacity style={[styles.button, styles.quickStart]} onPress={() => router.push('/quickstart')}>
           <FontAwesome name="play" size={70} color="white" />
           <Text style={styles.buttonText}>Quick Start</Text>
         </TouchableOpacity>
@@ -78,15 +78,15 @@ const styles = StyleSheet.create({
     marginHorizontal: '3%',
   },
   medicineButton:{
-  width: '90%',
-  height: '30%',
-  justifyContent: 'center',
-  alignItems: 'center',
-  borderWidth: 3,
-  borderColor: '#000',
-  borderRadius: 20,
-  marginHorizontal: '3%',
-  marginBottom:30,
+    width: '90%',
+    height: '30%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderWidth: 3,
+    borderColor: '#000',
+    borderRadius: 20,
+    marginHorizontal: '3%',
+    marginBottom:30,
   },
   medicationTracker: {
     backgroundColor: '#b0c4de',
