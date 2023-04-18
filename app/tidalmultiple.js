@@ -56,12 +56,7 @@ export default function TidalBreathing() {
 
         <View style={styles.slide}>
           <Text style={[styles.title, {textAlign: 'justify'}]}>Step 7: </Text>
-          <Text style={[styles.title, {textAlign: 'justify'}]}>Repeat steps 5 and 6 as many times as instructed by the doctor, using one puff of the inhaler at a time. </Text>
-        </View>
-
-        <View style={styles.slide}>
-          <Text style={[styles.title, {textAlign: 'justify'}]}>Step 8: </Text>
-          <Text style={[styles.title, {textAlign: 'justify'}]}>After you have completed the medication, replace the dust cap on the inhaler and clean the spacer as instructed.  </Text>
+          <Text style={[styles.title, {textAlign: 'justify'}]}>After you have completed the medication, replace the dust cap on the inhaler and clean the spacer.  </Text>
         </View>
 
 

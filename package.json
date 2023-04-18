@@ -11,7 +11,7 @@
     "@types/react": "~18.0.24",
     "@types/react-native": "~0.70.6",
     "eas-cli": "^3.7.2",
-    "expo": "~47.0.12",
+    "expo": "~47.0.14",
     "expo-constants": "~14.0.2",
     "expo-dev-client": "~2.0.1",
     "expo-device": "~5.0.0",

@@ -9,14 +9,17 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <View style={styles.titleContainer}>
-        <Text style={styles.title}>Welcome to the App</Text>
+      <View style={styles.header}>
+        <Text style={styles.title}>Smart Spacer</Text>
+        <MaterialCommunityIcons name="pill" size={35} color="#000" />
+        <Text style={styles.headertext}>200</Text>
+        {/* need to update the dosage from the quick start */}
       </View>
-
+      
       <View style={styles.buttonContainer}>
         <TouchableOpacity style={[styles.medicineButton, styles.medicationTracker]} onPress={() => router.push('/medicationtracker')}>
-          <MaterialCommunityIcons name="pill" size={80} color="white" />
-          <Text style={styles.buttonText}>Medication Tracker</Text>
+          <MaterialCommunityIcons name="bell" size={80} color="white" />
+          <Text style={styles.buttonText}>Reminders</Text>
         </TouchableOpacity>
 
         <TouchableOpacity style={[styles.button, styles.airQuality]} onPress={() => router.push('/airquality')}>
@@ -49,15 +52,31 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+    paddingTop: 70,
   },
-  titleContainer: {
-    flex: 0.6,
-    justifyContent: 'center',
+  header: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    // backgroundColor: '#6A5ACD',
+    paddingHorizontal: 15,
+    height: 60,
+    width: '100%',
+  },
+  headertext:{
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: '#000',
+    marginLeft: 0,
   },
   title: {
     fontSize: 30,
     fontWeight: 'bold',
+    color: '#000',
+    marginLeft: 10,
+    flex: 1,
+    textAlign: 'center',
   },
+  
   buttonContainer: {
     flex: 2,
     flexDirection: 'row',
