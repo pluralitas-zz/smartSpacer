@@ -1,4 +1,4 @@
-package com.pluralitas.smartSpacer.newarchitecture;
+package com.kelleenkoh.smartSpacer.newarchitecture;
 
 import android.app.Application;
 import androidx.annotation.NonNull;
@@ -20,9 +20,9 @@ import com.facebook.react.fabric.EmptyReactNativeConfig;
 import com.facebook.react.fabric.FabricJSIModuleProvider;
 import com.facebook.react.fabric.ReactNativeConfig;
 import com.facebook.react.uimanager.ViewManagerRegistry;
-import com.pluralitas.smartSpacer.BuildConfig;
-import com.pluralitas.smartSpacer.newarchitecture.components.MainComponentsRegistry;
-import com.pluralitas.smartSpacer.newarchitecture.modules.MainApplicationTurboModuleManagerDelegate;
+import com.kelleenkoh.smartSpacer.BuildConfig;
+import com.kelleenkoh.smartSpacer.newarchitecture.components.MainComponentsRegistry;
+import com.kelleenkoh.smartSpacer.newarchitecture.modules.MainApplicationTurboModuleManagerDelegate;
 import java.util.ArrayList;
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.pluralitas.smartSpacer.newarchitecture.components;
+package com.kelleenkoh.smartSpacer.newarchitecture.components;
 
 import com.facebook.jni.HybridData;
 import com.facebook.proguard.annotations.DoNotStrip;

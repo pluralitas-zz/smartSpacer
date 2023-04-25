@@ -25,10 +25,12 @@
         "android.permission.BLUETOOTH_ADMIN",
         "android.permission.BLUETOOTH_CONNECT"
       ],
-      "package": "com.pluralitas.smartSpacer"
+      "package": "com.kelleenkoh.smartSpacer"
+      // "package": "com.pluralitas.smartSpacer"
     },
     "ios": {
-      "bundleIdentifier": "com.pluralitas.smartSpacer"
+      "bundleIdentifier": "com.kelleenkoh.smartSpacer"
+      // "bundleIdentifier": "com.pluralitas.smartSpacer"
     },
     "extra": {
       "eas": {

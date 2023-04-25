@@ -1,4 +1,4 @@
-package com.pluralitas.smartSpacer.newarchitecture.modules;
+package com.kelleenkoh.smartSpacer.newarchitecture.modules;
 
 import com.facebook.jni.HybridData;
 import com.facebook.react.ReactPackage;

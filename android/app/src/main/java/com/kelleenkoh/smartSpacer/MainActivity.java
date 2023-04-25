@@ -1,4 +1,4 @@
-package com.pluralitas.smartSpacer;
+package com.kelleenkoh.smartSpacer;
 
 import android.os.Build;
 import android.os.Bundle;

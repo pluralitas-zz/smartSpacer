@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity,Pressable } from "react-native";
 import { useRouter } from "expo-router";
 import React, { useState } from 'react';
 import useBLE from "../useBLE";
@@ -7,27 +7,27 @@ export default function StepByStepGuide() {
   const router = useRouter();
   const [selected, setSelected] = useState(null);
   // // //Bluetooth items
-  // const DEVICE_NAME ='SmartSpacerBLE'; // BLE device name
-  // const SERVICE_UUID = '6d9a183a-2c79-4feb-9b69-7f8772a56c8d';
-  // const CHARACTERISTIC_UUID = 'd5a8a260-3ff0-4535-afe1-2c919441362a';
+  const DEVICE_NAME ='SmartSpacerBLE'; // BLE device name
+  const SERVICE_UUID = '6d9a183a-2c79-4feb-9b69-7f8772a56c8d';
+  const CHARACTERISTIC_UUID = 'd5a8a260-3ff0-4535-afe1-2c919441362a';
 
   // // Import Bluetooth Functions
-  // const {
-  //   requestPermissions,
-  //   scanForPeripherals,
-  //   // connectToDevice,
-  //   disconnectFromDevice,
-  //   connectedDevice,
-  //   pressure,
-  //   status,
-  // } = useBLE();
+  const {
+    requestPermissions,
+    scanForPeripherals,
+    // connectToDevice,
+    disconnectFromDevice,
+    connectedDevice,
+    pressure,
+    status,
+  } = useBLE();
 
-  // const scanForDevices = async () => {
-  //   const isPermissionsEnabled = await requestPermissions();
-  //   if (isPermissionsEnabled) {
-  //     scanForPeripherals();
-  //   }
-  // }
+  const scanForDevices = async () => {
+    const isPermissionsEnabled = await requestPermissions();
+    if (isPermissionsEnabled) {
+      scanForPeripherals();
+    }
+  }
   const handleButtonPress = (buttonType) => {
     setSelected(buttonType === selected ? null : buttonType);
   }
@@ -51,6 +51,13 @@ export default function StepByStepGuide() {
             <Text style={styles.buttonText}>Single</Text>
           </TouchableOpacity>
         </View>
+
+        {/* <Text> {status} </Text> */}
+        <Text> {pressure} </Text>
+        <Pressable style={styles.connectbutton} onPress={() => {connectedDevice ? disconnectFromDevice() : scanForDevices()}}>
+            <Text>{connectedDevice ? 'Disconnect from Device' : 'Connect to Bluetooth Device'}</Text>
+        </Pressable>
+
         <View style={styles.bottom}>
           <Text style={styles.text}>
             If you are not sure which technique to use, click the button below
@@ -60,11 +67,7 @@ export default function StepByStepGuide() {
           </TouchableOpacity>
         </View>
 
-        {/* <Text> {status} </Text>
-        <Text> {pressure} </Text>
-        <Pressable style={styles.button} onPress={() => {connectedDevice ? disconnectFromDevice() : scanForDevices()}}>
-            <Text>{connectedDevice ? 'Disconnect from Device' : 'Connect to Bluetooth Device'}</Text>
-        </Pressable> */}
+
 
       </View>
 
@@ -114,8 +117,19 @@ const styles = StyleSheet.create({
   },
   button: {
     flex: 1,
-    height: 150,
+    height: 100,
     margin: 10,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#ff8c00",
+    borderRadius: 15,
+    borderWidth: 3,
+    borderColor: "#000",
+  },
+  connectbutton: {
+    height: 50,
+    width:320,
+    // margin: 70,
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#ff8c00",

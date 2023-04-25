@@ -18,7 +18,7 @@ REMEMBER TO SET ./Android/build.gradle
 3. Press "Revoke USB debugging authorisation" a few times.
 4. Plug in android phone to PC.
 5. Run `npx expo prebuild`
-6. Run `npx expo start:android`
+6. Run `npx expo run:android`
 
 Package should compile and run on android phone without the use of Expo Go.
 

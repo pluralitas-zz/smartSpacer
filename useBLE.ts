@@ -30,7 +30,7 @@ function useBLE(): BluetoothLowEnergyApi {
   const bleManager = useMemo(() => new BleManager(), []);
   const [allDevices, setAllDevices] = useState<Device[]>([]);
   const [connectedDevice, setConnectedDevice] = useState<Device | null>(null);
-  const [pressure, setPressure] = useState<string>('not connected');
+  const [pressure, setPressure] = useState<string>('Not connected');
   const [status, setStatus] = useState<string>('Status')
 
   //request elevated permission to use Bluetooth
