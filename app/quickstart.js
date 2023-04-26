@@ -136,6 +136,7 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     borderWidth: 3,
     borderColor: "#000",
+    
   },
   selectedButton: {
     backgroundColor: '#d16002',
