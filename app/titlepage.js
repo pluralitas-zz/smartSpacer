@@ -1,18 +1,42 @@
-import React from 'react';
+import {React, useEffect, useState} from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, Dimensions, ScrollView } from 'react-native';
 import { MaterialCommunityIcons,AntDesign,FontAwesome5,FontAwesome } from '@expo/vector-icons';
 import { useRouter } from "expo-router";
+import { storeData, getData } from '../useStorage';
+
 const { width } = Dimensions.get('window');
 
 export default function App() {
   const router = useRouter();
+  const [doseStr, setDoseStr] = useState('');
+  const [hasRecord, setHasRecord] = useState(false);
+
+ useEffect(() => {
+  // Check if first time logging in
+  const checkData = async () => {
+    const hasRecord = await getData('hasRecord');
+    if(hasRecord){ // not first time
+      console.log('not first time')
+      setHasRecord(true);
+      const value = await getData('doses');
+      setDoseStr(value);
+    } else { // if first time
+      console.log('first time')
+      await storeData('hasRecord', "true");
+      await storeData('doses', '200');
+      setDoseStr('200')
+    }
+  };
+  checkData().catch((err) => {console.log(err)});
+ })
+  console.log(doseStr);
 
   return (
     <View style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.title}>Smart Spacer</Text>
         <MaterialCommunityIcons name="pill" size={35} color="#000" />
-        <Text style={styles.headertext}>200</Text>
+        <Text style={styles.headertext}>{doseStr}</Text>
         {/* need to update the dosage from the quick start */}
       </View>
       

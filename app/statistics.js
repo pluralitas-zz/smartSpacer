@@ -1,3 +1,119 @@
+import { StyleSheet, Text, View, Pressable } from "react-native";
+import { useRouter } from "expo-router";
+import React, { useState } from 'react';
+import { getData,storeData } from "../useStorage";
+// import useBLE from "../useBLE";
+
+export default function statistics() {
+  const router = useRouter();
+  const [doseStr, setdoseStr] = useState('')
+
+  const updateDose = async () => {
+    const value = await getData('doses');
+    const doseStrNew = (parseInt(value, 10) - 1).toString();
+    setdoseStr(doseStrNew);
+    await storeData('doses', doseStrNew);
+  }
+
+  return (
+    <View style={styles.container}>
+      <View style={styles.main}>
+        <Text style={styles.subtitle}></Text>
+
+        <Text> {doseStr} </Text>
+        {/* <Text> {pressure} </Text> */}
+        <Pressable style={styles.button} onPress={() => {updateDose()}}>
+            <Text>{'Get Dosage'}</Text>
+        </Pressable>
+
+        <Pressable style={styles.button} onPress={() => {alert('not used')}}>
+            <Text>{'Disconnect from Device'}</Text>
+        </Pressable>
+
+      </View>
+
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#fff",
+  },
+  header: {
+    height: 100,
+    backgroundColor: "#f08080",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  title: {
+    fontSize: 30,
+    fontWeight: "bold",
+    color: "#fff",
+  },
+  main: {
+    flex: 1,
+    alignItems: "center",
+    padding: 24,
+  },
+  subtitle: {
+    fontSize: 20,
+    fontWeight: "bold",
+    marginVertical: 20,
+  },
+  buttonsContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: '100%',
+  },
+  button: {
+
+    height: 50,
+    margin: 10,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#ff8c00",
+    borderRadius: 15,
+    borderWidth: 3,
+    borderColor: "#000",
+  },
+  selectedButton: {
+    backgroundColor: '#d16002',
+  },
+  buttonText: {
+    fontSize: 20,
+    fontWeight: "bold",
+    color: "#000",
+  },
+  bottom: {
+    marginTop: 40,
+    alignItems: "center",
+  },
+  text: {
+    fontSize: 16,
+    marginBottom: 10,
+    marginTop:50,
+  },
+  checkButton: {
+    width: 200,
+    height: 60,
+    marginHorizontal: 20,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#f08080",
+    borderRadius: 15,
+    borderWidth: 3,
+    borderColor: "#000",
+  },
+  checkButtonText: {
+    fontSize: 18,
+    fontWeight: "bold",
+    color: "#000",
+  },
+});
+
+
 // import { StyleSheet, Text, View, Pressable } from "react-native";
 // import { useRouter } from "expo-router";
 // import React, { useState } from 'react';
