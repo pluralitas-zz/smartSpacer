@@ -1,67 +1,161 @@
-import { StyleSheet, Text, View, TouchableOpacity, ScrollView, Modal } from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity,Pressable } from "react-native";
 import { useRouter } from "expo-router";
-import React from 'react';
-import { MaterialCommunityIcons, FontAwesome5 } from '@expo/vector-icons';
+import React, { useState } from 'react';
+import useBLE from "../useBLE";
 
-export default function Spirometer() {
+export default function StepByStepGuide() {
   const router = useRouter();
-  return (
-    <ScrollView contentContainerStyle={styles.container}>
-      <View style={styles.main}>
-        <Text style={styles.title}>Spirometer </Text>
-        <TouchableOpacity style={styles.button} onPress={() => router.push('/stepbystepguide')}>
-          <FontAwesome5 name="file-alt" size={30} color="#fff" />
-          <Text style={styles.buttonText}>Step-by-Step Guide</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.button} onPress={() => router.push('/tencommonmistakes')}>
-          <FontAwesome5 name="exclamation-triangle" size={30} color="#fff" />
-          <Text style={styles.buttonText}>Tips & Common Mistakes </Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.button} onPress={() => router.push('/breathingtechniques')}>
-          <MaterialCommunityIcons name="air-filter" size={30} color="#fff" />
-          <Text style={styles.buttonText}>Breathing Techniques</Text>
-        </TouchableOpacity>
-      </View>
-    </ScrollView>
+  const [selected, setSelected] = useState(null);
+  // // //Bluetooth items
+  const DEVICE_NAME ='SmartSpacerBLE'; // BLE device name
+  const SERVICE_UUID = '6d9a183a-2c79-4feb-9b69-7f8772a56c8d';
+  const CHARACTERISTIC_UUID = 'd5a8a260-3ff0-4535-afe1-2c919441362a';
 
+  // // Import Bluetooth Functions
+  const {
+    requestPermissions,
+    scanForPeripherals,
+    // connectToDevice,
+    disconnectFromDevice,
+    connectedDevice,
+    pressure,
+    status,
+  } = useBLE();
+
+  const scanForDevices = async () => {
+    const isPermissionsEnabled = await requestPermissions();
+    if (isPermissionsEnabled) {
+      scanForPeripherals();
+    }
+  }
+  const handleButtonPress = (buttonType) => {
+    setSelected(buttonType === selected ? null : buttonType);
+  }
+
+  return (
+    <View style={styles.container}>
+      <View style={styles.main}>
+        <Text style={styles.subtitle}>Take a fast deep breath and breath out as fast and hard for as long as you can.</Text>
+
+
+        <Text> {status} </Text>
+        <Text> {pressure} </Text>
+        <Pressable style={styles.connectbutton} onPress={() => {connectedDevice ? disconnectFromDevice() : scanForDevices()}}>
+            <Text>{connectedDevice ? 'Disconnect from Device' : 'Connect to Bluetooth Device'}</Text>
+        </Pressable>
+
+        <View style={styles.bottom}>
+          <Text style={styles.text}>
+          Press the start button when you are ready.
+          </Text>
+          <TouchableOpacity style={styles.checkButton} onPress={() => router.push('/breathingtechniques')}>
+            <Text style={styles.checkButtonText}>Start</Text>
+          </TouchableOpacity>
+        </View>
+
+
+
+      </View>
+
+      {/* =======
+        <View style={{ flex: 1, fontsize: 50, justifyContent: "center", alignItems: "center" }}>
+
+
+      <View style={{ flex: 1, fontsize: 50, justifyContent: "center", alignItems: "center" }}>
+          <Pressable style={styles.button} onPress={() => {connectedDevice ? disconnectFromDevice() : scanForDevices()}}>
+            <Text>{connectedDevice ? 'Disconnect from Device' : 'Connect to Bluetooth Device'}</Text>
+          </Pressable>
+        </View> */}
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flexGrow: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  main: {
     flex: 1,
-    width: '100%',
-    paddingHorizontal: 24,
-    paddingTop: 64,
-    alignItems: 'center',
+    backgroundColor: "#fff",
+  },
+  header: {
+    height: 100,
+    backgroundColor: "#f08080",
+    justifyContent: "center",
+    alignItems: "center",
   },
   title: {
     fontSize: 30,
-    fontWeight: 'bold',
+    fontWeight: "bold",
+    color: "#fff",
+  },
+  main: {
+    flex: 1,
+    alignItems: "center",
+    padding: 24,
+  },
+  subtitle: {
+    fontSize: 20,
+    fontWeight: "bold",
+    marginVertical: 20,
+  },
+  buttonsContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: '100%',
   },
   button: {
-    width: '100%',
-    height: '20%',
-    marginTop: '10%',
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#f08080',
+    flex: 1,
+    height: 100,
+    margin: 10,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#ff8c00",
     borderRadius: 15,
     borderWidth: 3,
-    borderColor: '#000',
-    flexDirection: 'row',
-    paddingHorizontal: 16,
+    borderColor: "#000",
+  },
+  connectbutton: {
+    height: 50,
+    width:320,
+    // margin: 70,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#ff8c00",
+    borderRadius: 15,
+    borderWidth: 3,
+    borderColor: "#000",
+    
+  },
+  selectedButton: {
+    backgroundColor: '#d16002',
   },
   buttonText: {
     fontSize: 20,
-    fontWeight: 'bold',
-    color: '#000',
-    marginLeft: 8,
+    fontWeight: "bold",
+    color: "#000",
+  },
+  bottom: {
+    marginTop: 40,
+    alignItems: "center",
+  },
+  text: {
+    fontSize: 16,
+    marginBottom: 10,
+    marginTop:50,
+  },
+  checkButton: {
+    width: 200,
+    height: 60,
+    marginHorizontal: 20,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#f08080",
+    borderRadius: 15,
+    borderWidth: 3,
+    borderColor: "#000",
+  },
+  checkButtonText: {
+    fontSize: 18,
+    fontWeight: "bold",
+    color: "#000",
   },
 });
+

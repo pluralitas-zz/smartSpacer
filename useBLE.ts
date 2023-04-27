@@ -33,6 +33,7 @@ function useBLE(): BluetoothLowEnergyApi {
   const [pressure, setPressure] = useState<string>('Not connected');
   const [status, setStatus] = useState<string>('Status')
 
+
   //request elevated permission to use Bluetooth
   const requestAndroid31Permissions = async () => {
     setStatus('requestAndroid31Permissions Started');
@@ -141,11 +142,12 @@ function useBLE(): BluetoothLowEnergyApi {
       console.log(error);
       return -1;
     } else if (!characteristic?.value) {
-      console.log("No Data was recieved");
+      console.log("No Data awas recieved");
       return -1;
     }
 
     const rawData = base64.decode(characteristic.value);
+
     setPressure(rawData);
   };
 
@@ -177,3 +179,7 @@ function useBLE(): BluetoothLowEnergyApi {
 }
 
 export default useBLE;
+
+
+
+

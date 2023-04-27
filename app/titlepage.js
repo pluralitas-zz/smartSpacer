@@ -46,9 +46,9 @@ export default function App() {
           <Text style={styles.buttonText}>Reminders</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={[styles.button, styles.airQuality]} onPress={() => router.push('/airquality')}>
-          <AntDesign name="cloud" size={70} color="white" />
-          <Text style={styles.buttonText}>Air Quality</Text>
+        <TouchableOpacity style={[styles.button, styles.learn]} onPress={() => router.push('/learn')}>
+          <AntDesign name="book" size={70} color="white" />
+          <Text style={styles.buttonText}>Learn</Text>
         </TouchableOpacity>
 
         <TouchableOpacity style={[styles.button, styles.quickStart]} onPress={() => router.push('/quickstart')}>
@@ -138,7 +138,7 @@ const styles = StyleSheet.create({
     marginTop: '5%',
     // paddingBottom:10,
   },
-  airQuality: {
+  learn: {
     backgroundColor: '#f5f5dc',
   },
   quickStart: {
