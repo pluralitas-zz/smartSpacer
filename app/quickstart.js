@@ -17,6 +17,8 @@ export default function StepByStepGuide() {
   const [isRunning, setIsRunning] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
 
+  const [showCountdown, setShowCountdown] = useState(false);
+
 
   // // //Bluetooth items
   const DEVICE_NAME ='SmartSpacerBLE'; // BLE device name
@@ -83,6 +85,32 @@ export default function StepByStepGuide() {
     setModalVisible(true);
   };
 
+  const handleButtonPress = (buttonType) => {
+    setSelected(buttonType === selected ? null : buttonType);
+  }
+
+  const startButtonPress = (buttonType) => {
+    setSelected(buttonType);
+    setShowCountdown(true);
+  };
+
+  useEffect(() => {
+    if (showCountdown && count > 0) {
+      const timer = setTimeout(() => {
+        setCount(count - 1);
+      }, 1000);
+      return () => clearTimeout(timer);
+    } else if (showCountdown && count === 0) {
+      setShowCountdown(false);
+    }
+  }, [count, showCountdown]);
+
+  const handleStartPress = () => {
+    setCount(10);
+    setShowCountdown(true);
+  };
+
+  
 
   return (
     <View style={styles.container}>
@@ -104,25 +132,50 @@ export default function StepByStepGuide() {
           </TouchableOpacity>
         </View>
 
-        <TouchableOpacity style={styles.checkButton} onPress={handleStart} disabled={isRunning}>
-            <Text style={styles.checkButtonText}> {isRunning ? 'Recording...' : 'Start'} </Text>
-          </TouchableOpacity>
+        <Text style={styles.text}>Connect the bluetooth device. </Text>
+        {/* <Text> {status} </Text> */}
+        {/* <Text> {pressure} </Text> */}
+        <TouchableOpacity style={styles.checkButton} onPress={() => {connectedDevice ? disconnectFromDevice() : scanForDevices()}}>
+            <Text style={styles.checkButtonText}>{connectedDevice ? 'Disconnect ' : 'Connect '}</Text>
+        </TouchableOpacity>
 
-        <Modal visible={modalVisible} transparent={true}>
-          <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-            <View style={{ backgroundColor: 'white', borderRadius: 10, padding: 20 }}>
-              <Text style={{ fontSize: 48 }}>{count}</Text>
-            </View>
-          </View>
-        </Modal>
+
+        <Text style={styles.text}>Press the start button to start medication. Follow the timer. </Text>
+
+
         
 
 
-        {/* <Text> {status} </Text>
-        <Text> {pressure} </Text>
-        <Pressable style={styles.connectbutton} onPress={() => {connectedDevice ? disconnectFromDevice() : scanForDevices()}}>
-            <Text>{connectedDevice ? 'Disconnect from Device' : 'Connect to Bluetooth Device'}</Text>
-        </Pressable> */}
+        {/* countdown timer shown with the button turning recording */}
+        {/* <View style={styles.countdownContainer1}>
+          <TouchableOpacity style={styles.checkButton} onPress={handleStart} disabled={isRunning}>
+            <Text style={styles.checkButtonText}>{isRunning ? 'Recording...' : 'Start'}</Text>
+          </TouchableOpacity>
+          {isRunning && (
+            // <View style={styles.countdownContainer}>
+              <Text style={styles.countdownText}>{count}</Text>
+            // </View>
+          )}
+        </View> */}
+
+
+        {/* countdown timer not shown, the button just turns recording and then when it is done after 10s, then it will return to start */}
+        <View style={styles.countdownContainer1}>
+          <TouchableOpacity style={styles.checkButton} onPress={handleStart} disabled={isRunning}>
+            <Text style={styles.checkButtonText}>{isRunning ? 'Recording...' : 'Start'}</Text>
+          </TouchableOpacity>
+          {showCountdown && (
+            <Text style={styles.countdownText}>{count}</Text>
+          )}
+        </View>
+        
+
+
+
+ 
+
+
+
 
 
 
@@ -169,25 +222,15 @@ export default function StepByStepGuide() {
 
 
         <View style={styles.bottom}>
-          <Text style={styles.text}> If you are not sure which technique to use, click the button below. </Text>
+          <Text style={styles.text}>If you are unsure of which technique to use, click the button below. </Text>
           <TouchableOpacity style={styles.checkButton} onPress={() => router.push('/breathingtechniques')}>
             <Text style={styles.checkButtonText}>Check</Text>
           </TouchableOpacity>
         </View>
 
-
-
       </View>
 
-      {/* =======
-        <View style={{ flex: 1, fontsize: 50, justifyContent: "center", alignItems: "center" }}>
 
-
-      <View style={{ flex: 1, fontsize: 50, justifyContent: "center", alignItems: "center" }}>
-          <Pressable style={styles.button} onPress={() => {connectedDevice ? disconnectFromDevice() : scanForDevices()}}>
-            <Text>{connectedDevice ? 'Disconnect from Device' : 'Connect to Bluetooth Device'}</Text>
-          </Pressable>
-        </View> */}
     </View>
   );
 }
@@ -255,13 +298,14 @@ const styles = StyleSheet.create({
     color: "#000",
   },
   bottom: {
-    marginTop: 100,
+    marginTop: 60,
     alignItems: "center",
   },
   text: {
     fontSize: 16,
     marginBottom: 10,
-    marginTop:50,
+    marginTop:30,
+    
   },
   checkButton: {
     width: 200,
@@ -278,6 +322,28 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: "bold",
     color: "#000",
+  },
+  countdownContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#fff',
+    borderRadius: 5,
+    paddingVertical: 20,
+    paddingHorizontal: 30,
+
+  },
+  countdownContainer1: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#fff',
+    borderRadius: 5,
+    paddingHorizontal: 30,
+    marginBottom: 20,
+  },
+  countdownText: {
+    fontSize: 50,
+    fontWeight: 'bold',
+    textAlign: 'center',
   },
 });
 
