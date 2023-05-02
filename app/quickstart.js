@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Pressable, TouchableOpacity, Modal } from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import { useRouter } from "expo-router";
 import React, { useState, useEffect } from "react";
 import useBLE from "../useBLE";
@@ -18,6 +18,9 @@ export default function StepByStepGuide() {
   const [modalVisible, setModalVisible] = useState(false);
 
   const [showCountdown, setShowCountdown] = useState(false);
+
+  const [inhaleData, setInhaleData] = useState([]);
+  const [exhaleData, setExhaleData] = useState([]);
 
 
   // // //Bluetooth items
@@ -49,6 +52,7 @@ export default function StepByStepGuide() {
     }
   };
 
+
   function updateValues(pressure) {
     let [newExhale, newInhale] = pressure.split(",").map(parseFloat);
     if (isNaN(newExhale)) {
@@ -59,7 +63,10 @@ export default function StepByStepGuide() {
     }
     setInhale(prevInhale => [...prevInhale.slice(1), newInhale]);
     setExhale(prevExhale => [...prevExhale.slice(1), newExhale]);
+    setInhaleData(prevInhaleData => [...prevInhaleData, newInhale]);
+    setExhaleData(prevExhaleData => [...prevExhaleData, newExhale]);
   }
+  
   
 
   useEffect(() => {
@@ -79,11 +86,6 @@ export default function StepByStepGuide() {
     }
     return () => clearInterval(intervalId);
   }, [isRunning, count]);
-
-  const handleStart = () => {
-    setIsRunning(true);
-    setModalVisible(true);
-  };
 
   const handleButtonPress = (buttonType) => {
     setSelected(buttonType === selected ? null : buttonType);
@@ -133,17 +135,14 @@ export default function StepByStepGuide() {
         </View>
 
         <Text style={styles.text}>Connect the bluetooth device. </Text>
-        {/* <Text> {status} </Text> */}
-        {/* <Text> {pressure} </Text> */}
+        <Text> {status} </Text>
+        <Text> {pressure} </Text>
         <TouchableOpacity style={styles.checkButton} onPress={() => {connectedDevice ? disconnectFromDevice() : scanForDevices()}}>
             <Text style={styles.checkButtonText}>{connectedDevice ? 'Disconnect ' : 'Connect '}</Text>
         </TouchableOpacity>
 
 
         <Text style={styles.text}>Press the start button to start medication. Follow the timer. </Text>
-
-
-        
 
 
         {/* countdown timer shown with the button turning recording */}
@@ -173,9 +172,6 @@ export default function StepByStepGuide() {
 
 
  
-
-
-
 
 
 
