@@ -16,47 +16,51 @@ export default function TidalBreathing() {
         <View style={styles.slide}>
           <Text style={[styles.title, {textAlign: 'justify'}]}>Step 1:</Text>
           <Text style={[styles.title, {textAlign: 'justify'}]}>Assemble the spacer, according to the image below.</Text>
-          <Image source={require("../assets/images/spacer.png")} style={styles.ModelImage} />
+          <Image source={require("../assets/spacerSteps/step1.jpg")} style={styles.ModelImage} />
         </View>
 
         <View style={styles.slide}>
           <Text style={[styles.title, {textAlign: 'justify'}]}>Step 2: </Text>
-          {/* <Text style={[styles.title, {textAlign: 'justify'}]}>Hold your inhaler upright, remove the dust cap and shake it well.</Text> */}
-          <Text style={[styles.title, {textAlign: 'justify'}]}>Remove cap from inhaler, shake the inhaler and insert inhaler into the spacer as shown.</Text>
-          <View style={{flexDirection: 'column'}}>
-            <Image source={require("../assets/gif/inhaler_cap_remove.gif")} style={styles.smallModelImage} />
-            <Image source={require("../assets/gif/shake_inhaler.gif")} style={styles.smallModelImage} />
-          </View>
+          <Text style={[styles.title, {textAlign: 'justify'}]}>Hold your inhaler upright, remove the dust cap and shake it well.</Text>
+          <Image source={require("../assets/spacerSteps/step2.jpg")} style={styles.ModelImage} />
         </View>            
 
+        <View style={styles.slide}>
+          <Text style={[styles.title, {textAlign: 'justify'}]}>Step 3: </Text>
+          <Text style={[styles.title, {textAlign: 'justify'}]}>Put your inhaler into the hole at the back of the spacer.</Text>
+          <Image source={require("../assets/spacerSteps/step3.jpg")} style={styles.ModelImage} />
+        </View>          
 
         <View style={styles.slide}>
-          <Text style={[styles.title, {textAlign: 'justify'}]}>Step 3: </Text>  
+          <Text style={[styles.title, {textAlign: 'justify'}]}>Step 4: </Text>  
           <Text style={[styles.title, {textAlign: 'justify'}]}>Tilt your chin up. </Text>
           <Text style={[styles.title, {textAlign: 'justify'}]}>Place the mouthpiece of the spacer in your mouth and close your lips around it to create a tight seal.</Text>
-          <Image source={require("../assets/gif/tilt_head_big.gif")} style={styles.ModelImage} />
-        </View>
-
-        <View style={styles.slide}>
-          <Text style={[styles.title, {textAlign: 'justify'}]}>Step 4: </Text>
-          <Text style={[styles.title, {textAlign: 'justify'}]}>Press the canister on the inhaler once to release the medication into the spacer. </Text>
+          <Image source={require("../assets/spacerSteps/step4_breatheout.jpg")} style={styles.ModelImage} />
         </View>
 
         <View style={styles.slide}>
           <Text style={[styles.title, {textAlign: 'justify'}]}>Step 5: </Text>
-          <Text style={[styles.title, {textAlign: 'justify'}]}>Breathe in and out normally for about 5 breaths, making sure you inhale and exhale through the space. </Text>
-          <Text style={[styles.subtitle, {textAlign: 'justify'}]}>Note: You should see the valve in the spacer move for each breath.</Text>
+          <Text style={[styles.title, {textAlign: 'justify'}]}>Press the canister on the inhaler once to release the medication into the spacer. </Text>
+          <Image source={require("../assets/spacerSteps/step5_tidal.jpg")} style={styles.ModelImage} />
         </View>
 
         <View style={styles.slide}>
           <Text style={[styles.title, {textAlign: 'justify'}]}>Step 6: </Text>
-          <Text style={[styles.title, {textAlign: 'justify'}]}>Shake the inhaler again after every spray of medication.</Text>
-          <Image source={require("../assets/gif/shake_inhaler.gif")} style={styles.ModelImage} />
+          <Text style={[styles.title, {textAlign: 'justify'}]}>Breathe in and out normally for about 5 breaths, making sure you inhale and exhale through the space. </Text>
+          <Text style={[styles.subtitle, {textAlign: 'justify'}]}>Note: You should see the valve in the spacer move for each breath.</Text>
+          <Image source={require("../assets/spacerSteps/step6_breathe5.jpg")} style={styles.ModelImage} />
         </View>
 
         <View style={styles.slide}>
           <Text style={[styles.title, {textAlign: 'justify'}]}>Step 7: </Text>
+          <Text style={[styles.title, {textAlign: 'justify'}]}>Shake the inhaler again after every spray of medication.</Text>
+          <Image source={require("../assets/spacerSteps/step7_shake.jpg")} style={styles.ModelImage} />
+        </View>
+
+        <View style={styles.slide}>
+          <Text style={[styles.title, {textAlign: 'justify'}]}>Step 8: </Text>
           <Text style={[styles.title, {textAlign: 'justify'}]}>After you have completed the medication, replace the dust cap on the inhaler and clean the spacer.  </Text>
+          <Image source={require("../assets/spacerSteps/step9_clean.jpg")} style={styles.ModelImage} />
         </View>
 
 
