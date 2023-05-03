@@ -160,7 +160,7 @@ export default function StepByStepGuide() {
 
         {/* countdown timer not shown, the button just turns recording and then when it is done after 10s, then it will return to start */}
         <View style={styles.countdownContainer1}>
-          <TouchableOpacity style={styles.checkButton} onPress={handleStart} disabled={isRunning}>
+          <TouchableOpacity style={styles.checkButton} onPress={handleStartPress} disabled={isRunning}>
             <Text style={styles.checkButtonText}>{isRunning ? 'Recording...' : 'Start'}</Text>
           </TouchableOpacity>
           {showCountdown && (
