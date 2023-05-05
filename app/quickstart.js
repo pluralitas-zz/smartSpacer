@@ -174,7 +174,7 @@ export default function StepByStepGuide() {
  
 
 
-
+        {/* LINE CHART FOR PLOTTING OF INHALE AND EXHALE VALUES */}
         {/* <LineChart
           data={{
             labels: labels,

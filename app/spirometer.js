@@ -12,6 +12,7 @@ export default function StepByStepGuide() {
   const CHARACTERISTIC_UUID = 'd5a8a260-3ff0-4535-afe1-2c919441362a';
 
   // // Import Bluetooth Functions
+  
   const {
     requestPermissions,
     scanForPeripherals,
@@ -53,6 +54,47 @@ export default function StepByStepGuide() {
           </TouchableOpacity>
         </View>
 
+
+        <LineChart
+          data={{
+            labels: labels,
+            datasets: [
+              {
+                data: exhale,
+                strokeWidth: 3,
+                color: (opacity = 1) => `rgba(255, 0, 0, ${opacity})`,
+              },
+              {
+                data: inhale,
+                strokeWidth: 3,
+                color: (opacity = 1) => `rgba(0, 255, 0, ${opacity})`,
+              },
+            ],
+          }}
+          width={400}
+          height={220}
+          chartConfig={{
+            backgroundColor: "#eff3ff",
+            decimalPlaces: 2,
+            color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
+            style: {
+              borderRadius: 16,
+            },
+          }}
+          style={{
+            marginTop: 20,
+            borderRadius: 16,
+          }}
+          extraRNProps={{
+            clipPath: "url(#chartArea)",
+          }}
+        >
+          <Defs>
+            <ClipPath id="chartArea">
+              <Rect x="0" y="0" width="400" height="200" />
+            </ClipPath>
+          </Defs>
+        </LineChart>
 
 
       </View>
